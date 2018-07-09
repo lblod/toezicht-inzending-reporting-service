@@ -1,0 +1,21 @@
+{
+  "name": "toezicht-inzending-reporting-service",
+  "version": "0.0.0",
+  "description": "Microservice to generate reports on the inzending voor toezicht",
+  "dependencies": {
+    "cron": "^1.3.0",
+    "event-stream": "^3.3.4",
+    "fs-extra": "^5.0.0",
+    "request": "^2.85.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lblod/toezicht-inzending-reporting-service.git"
+  },
+  "author": "redpencil.io",
+  "license": "MIT"
+}
