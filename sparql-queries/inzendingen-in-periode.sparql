@@ -16,14 +16,7 @@ WHERE {
       dct:subject ?bestuurseenheid ;
       nmo:sentDate ?ontvangstdatum .
       
-  FILTER(?ontvangstdatum >= "{YESTERDAY}"^^xsd:dateTime && ?ontvangstdatum < "{TODAY}"^^xsd:dateTime)
-  
-  BIND(STR(?ontvangstdatum) as ?ontvangstdatumStr)
-  BIND(SUBSTR(?ontvangstdatumStr, 1, 4) as ?ontvangstjaar)
-  BIND(SUBSTR(?ontvangstdatumStr, 6, 2) as ?ontvangstmaand)
-  BIND(SUBSTR(?ontvangstdatumStr, 9, 2) as ?ontvangstdag)
-
-  BIND(IRI(CONCAT("https://loket.lblod.info/pub/toezicht/inzendingen/", ?uuid)) as ?linkLoket)
+  FILTER(?ontvangstdatum >= "{START}"^^xsd:dateTime && ?ontvangstdatum < "{END}"^^xsd:dateTime)
 
   ?bestuurseenheid a besluit:Bestuurseenheid .
   OPTIONAL {
@@ -31,16 +24,13 @@ WHERE {
   }
   OPTIONAL {
       ?bestuurseenheid besluit:classificatie/skos:prefLabel ?typeBestuur .
-  }
+  } 
   OPTIONAL {
       ?bestuurseenheid ext:kbonummer ?kboNummer .
   } 
   OPTIONAL {
       ?bestuurseenheid besluit:werkingsgebied/ext:inProvincie/rdfs:label ?provincie .
   }
-
-  OPTIONAL {
-  } 
 
   OPTIONAL {
       ?inzending toezicht:authenticityType/skos:prefLabel ?status .
@@ -57,4 +47,11 @@ WHERE {
   OPTIONAL {
       ?inzending toezicht:agendaItemCount ?agendapunten .
   }
+  
+  BIND(STR(?ontvangstdatum) as ?ontvangstdatumStr)
+  BIND(SUBSTR(?ontvangstdatumStr, 1, 4) as ?ontvangstjaar)
+  BIND(SUBSTR(?ontvangstdatumStr, 6, 2) as ?ontvangstmaand)
+  BIND(SUBSTR(?ontvangstdatumStr, 9, 2) as ?ontvangstdag)
+
+  BIND(IRI(CONCAT("https://loket.lblod.info/pub/toezicht/inzendingen/", ?uuid)) as ?linkLoket)
 }
