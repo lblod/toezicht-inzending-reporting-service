@@ -24,6 +24,7 @@ The following environment variables can be configured:
 * `CRON_PATTERN`: cron pattern to configure the frequency of the cron job. The pattern follows the format as specified in [node-cron](https://www.npmjs.com/package/cron#available-cron-patterns). Defaults to `0 0 0 2 * *`, run every day at 2 a.m.
 * `CURRENT_PERIOD_START`: start date of the time period to filter on. Format: `YYYY-MM-DD`. Default: `2012-01-01`.
 * `CURRENT_PERIOD_END`: end date of the time period to filter on. Format: `YYYY-MM-DD`. Default: `2019-01-01'.
+* `DOMAIN_URL`: Base URL used to generate the links to view the inzendingen (e.g. http://loket.lokaalbestuur.vlaanderen.be)
 
 
 ## REST API

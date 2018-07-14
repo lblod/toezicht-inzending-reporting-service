@@ -53,5 +53,5 @@ WHERE {
   BIND(SUBSTR(?ontvangstdatumStr, 6, 2) as ?ontvangstmaand)
   BIND(SUBSTR(?ontvangstdatumStr, 9, 2) as ?ontvangstdag)
 
-  BIND(IRI(CONCAT("https://loket.lblod.info/pub/toezicht/inzendingen/", ?uuid)) as ?linkLoket)
+  BIND(IRI(CONCAT("{DOMAIN_URL}/pub/toezicht/inzendingen/", ?uuid)) as ?linkLoket)
 }
