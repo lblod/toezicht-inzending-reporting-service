@@ -16,6 +16,11 @@ WHERE {
       dct:subject ?bestuurseenheid ;
       nmo:sentDate ?ontvangstdatum .
       
+  BIND(STR(?ontvangstdatum) as ?ontvangstdatumStr)
+  BIND(SUBSTR(?ontvangstdatumStr, 1, 4) as ?ontvangstjaar)
+  BIND(SUBSTR(?ontvangstdatumStr, 6, 2) as ?ontvangstmaand)
+  BIND(SUBSTR(?ontvangstdatumStr, 9, 2) as ?ontvangstdag)
+
   FILTER(?ontvangstdatum >= "{START}"^^xsd:dateTime && ?ontvangstdatum < "{END}"^^xsd:dateTime)
 
   ?bestuurseenheid a besluit:Bestuurseenheid .
@@ -48,10 +53,5 @@ WHERE {
       ?inzending toezicht:agendaItemCount ?agendapunten .
   }
   
-  BIND(STR(?ontvangstdatum) as ?ontvangstdatumStr)
-  BIND(SUBSTR(?ontvangstdatumStr, 1, 4) as ?ontvangstjaar)
-  BIND(SUBSTR(?ontvangstdatumStr, 6, 2) as ?ontvangstmaand)
-  BIND(SUBSTR(?ontvangstdatumStr, 9, 2) as ?ontvangstdag)
-
   BIND(IRI(CONCAT("{DOMAIN_URL}/pub/toezicht/inzendingen/", ?uuid)) as ?linkLoket)
 }
