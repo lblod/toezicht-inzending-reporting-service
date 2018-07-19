@@ -11,7 +11,7 @@ To add the service to your stack, add the following snippet to `docker-compose.y
 ```
 services:
   toezichtreporting:
-    image: lblod/toezicht-inzending-reporting-service:0.1.0
+    image: lblod/toezicht-inzending-reporting-service:0.1.1
     volumes:
       - ./data/reports:/data/output
 ```
@@ -35,7 +35,7 @@ Returns `202 Accepted` if the report generation started successfully. The locati
 
 Returns `503 Service Unavailable` if a report task is already running.
 
-### GET /export-tasks/:id
+### GET /report-tasks/:id
 Get the status of a report task.
 
 Returns `200 OK` with a task resource in the response body. Task status is one of `ongoing`, `done`, `cancelled` or `failed`.
