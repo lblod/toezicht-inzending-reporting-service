@@ -7,7 +7,20 @@ PREFIX ext: <http://mu.semte.ch/vocabularies/ext/>
 PREFIX mu: <http://mu.semte.ch/vocabularies/core/>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 
-SELECT DISTINCT ?typeBestuur ?kboNummer ?provincie ?naamBestuur ?besluitType ?status ?boekjaar ?besluitdatum ?ontvangstdatum ?ontvangstjaar ?ontvangstmaand ?ontvangstdag ?agendapunten ?linkLoket
+SELECT DISTINCT ?typeBestuur as ?Type_Bestuur
+                ?kboNummer as ?KBO_Nummer
+                ?naamBestuur as ?Bestuur
+                ?provincie as ?Provincie
+                ?besluitType as ?Type_Besluit
+                ?status as ?Status
+                ?boekjaar as ?Rapportjaar
+                ?besluitdatum as ?Besluitdatum
+                ?ontvangstdatum as ?Ontvangstdatum_en_tijdstip
+                ?ontvangstjaar as ?Jaar_Ontvangst
+                ?ontvangstmaand as ?Maand_Ontvangst
+                ?ontvangstdag as ?Dag_Ontvangst
+                ?agendapunten as ?Agendapunten
+                ?linkLoket as ?Link_Loket
 WHERE {
   ?inzending a toezicht:InzendingVoorToezicht ;
       mu:uuid ?uuid ;
@@ -16,10 +29,9 @@ WHERE {
       dct:subject ?bestuurseenheid ;
       nmo:sentDate ?ontvangstdatum .
       
-  BIND(STR(?ontvangstdatum) as ?ontvangstdatumStr)
-  BIND(SUBSTR(?ontvangstdatumStr, 1, 4) as ?ontvangstjaar)
-  BIND(SUBSTR(?ontvangstdatumStr, 6, 2) as ?ontvangstmaand)
-  BIND(SUBSTR(?ontvangstdatumStr, 9, 2) as ?ontvangstdag)
+  BIND(YEAR(?ontvangstdatum) as ?ontvangstjaar)
+  BIND(MONTH(?ontvangstdatum) as ?ontvangstmaand)
+  BIND(DAY(?ontvangstdatum) as ?ontvangstdag)
 
   FILTER(?ontvangstdatum >= "{START}"^^xsd:dateTime && ?ontvangstdatum < "{END}"^^xsd:dateTime)
 
