@@ -26,6 +26,12 @@ The following environment variables can be configured:
 * `CURRENT_PERIOD_END`: end date of the time period to filter on. Format: `YYYY-MM-DD`. Default: `2019-01-01'.
 * `DOMAIN_URL`: Base URL used to generate the links to view the inzendingen (e.g. http://loket.lokaalbestuur.vlaanderen.be)
 
+Optionally, enviroment variables can be set to upload the generated reports through FTP. The upload will only happen if `TARGET_USERNAME` has been configured.
+
+* `TARGET_HOST`: optional, default `'ftp'`
+* `TARGET_PORT`: optional, default `'21'`
+* `TARGET_USERNAME`: required to enable the FTP upload
+* `TARGET_PASSWORD`: optional
 
 ## REST API
 ### POST /report-tasks
