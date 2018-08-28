@@ -32,6 +32,7 @@ Optionally, enviroment variables can be set to upload the generated reports thro
 * `TARGET_PORT`: optional, default `'21'`
 * `TARGET_USERNAME`: required to enable the FTP upload
 * `TARGET_PASSWORD`: optional
+* `TARGET_FOLDER`: optional, default `/`
 
 ## REST API
 ### POST /report-tasks
