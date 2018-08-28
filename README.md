@@ -11,7 +11,7 @@ To add the service to your stack, add the following snippet to `docker-compose.y
 ```
 services:
   toezichtreporting:
-    image: lblod/toezicht-inzending-reporting-service:0.2.0
+    image: lblod/toezicht-inzending-reporting-service:0.3.0
     volumes:
       - ./data/reports:/data/output
 ```
@@ -23,7 +23,7 @@ Don't forget to update the dispatcher configuration to route requests to the exp
 The following environment variables can be configured:
 * `CRON_PATTERN`: cron pattern to configure the frequency of the cron job. The pattern follows the format as specified in [node-cron](https://www.npmjs.com/package/cron#available-cron-patterns). Defaults to `0 0 0 2 * *`, run every day at 2 a.m.
 * `CURRENT_PERIOD_START`: start date of the time period to filter on. Format: `YYYY-MM-DD`. Default: `2012-01-01`.
-* `CURRENT_PERIOD_END`: end date of the time period to filter on. Format: `YYYY-MM-DD`. Default: `2019-01-01'.
+* `CURRENT_PERIOD_END`: end date of the time period to filter on. Format: `YYYY-MM-DD`. Default: `2019-01-01`.
 * `DOMAIN_URL`: Base URL used to generate the links to view the inzendingen (e.g. http://loket.lokaalbestuur.vlaanderen.be)
 
 Optionally, enviroment variables can be set to upload the generated reports through FTP. The upload will only happen if `TARGET_USERNAME` has been configured.
@@ -52,7 +52,7 @@ Add the following snippet to your stack during development:
 ```
 services:
   toezichtreporting:
-    image: semtech/mu-javascript-template:1.3.1
+    image: semtech/mu-javascript-template:1.3.2
     ports:
       - 8888:80
     environment:
