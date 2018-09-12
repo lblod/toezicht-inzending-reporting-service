@@ -22,7 +22,7 @@ SELECT DISTINCT ?typeBestuur as ?Type_Bestuur
                 ?ontvangstmaand as ?Maand_Ontvangst
                 ?ontvangstdag as ?Dag_Ontvangst
                 ?agendapunten as ?Agendapunten
-                (GROUP_CONCAT(?linkLoket; SEPARATOR = ',') as ?Link_Loket)
+                (GROUP_CONCAT(DISTINCT ?linkLoket; SEPARATOR = ',') as ?Link_Loket)
 WHERE {
   ?inzending a toezicht:InzendingVoorToezicht ;
       mu:uuid ?uuid ;
