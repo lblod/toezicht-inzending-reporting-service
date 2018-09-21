@@ -11,7 +11,7 @@ To add the service to your stack, add the following snippet to `docker-compose.y
 ```
 services:
   toezichtreporting:
-    image: lblod/toezicht-inzending-reporting-service:0.3.3
+    image: lblod/toezicht-inzending-reporting-service:0.3.4
     volumes:
       - ./data/reports:/data/output
 ```
