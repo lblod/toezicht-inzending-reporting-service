@@ -12,7 +12,7 @@ PREFIX nfo: <http://www.semanticdesktop.org/ontologies/2007/03/22/nfo#>
 SELECT DISTINCT ?typeBestuur as ?Type_Bestuur
                 ?kboNummer as ?KBO_Nummer
                 ?naamBestuur as ?Bestuur
-                ?provincie as ?Provincie
+                ?provincieLabel as ?Provincie
                 ?besluitType as ?Type_Besluit
                 ?status as ?Status
                 ?boekjaar as ?Rapportjaar
@@ -48,7 +48,9 @@ WHERE {
       ?bestuurseenheid ext:kbonummer ?kboNummer .
   } 
   OPTIONAL {
-      ?bestuurseenheid besluit:werkingsgebied/ext:inProvincie/rdfs:label ?provincie .
+      ?bestuurseenheid besluit:werkingsgebied ?werkingsgebied .
+      ?werkingsgebied ext:inProvincie* ?provincie .
+      ?provincie ext:werkingsgebiedNiveau "Provincie" ; rdfs:label ?provincieLabel .
   }
 
   OPTIONAL {
